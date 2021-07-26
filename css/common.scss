@@ -6,9 +6,10 @@ body, h1, h2, h3, h4, h5, h6, p, ul, button{margin: 0;padding: 0;}
 h1, h2, h3, h4, h5, h6{font-size: 100%;}
 ul{list-style: none;}
 address{font-style: normal;}
+a:link, button{cursor: url("../images/common/cursor2.png"), auto;}
 a:link, a:visited, a:hover, a:active{text-decoration: none;color: inherit;}
 img{border: none;vertical-align: top;max-width: 100%;}
-button{font-family: inherit;font-size: inherit;color: inherit;border: none;background: none;cursor: pointer;}
+button{font-family: inherit;font-size: inherit;color: inherit;border: none;background: none;}
 header, nav, section, footer{display: block;}
 
 // common class
@@ -21,28 +22,63 @@ header, nav, section, footer{display: block;}
 .content{position: relative;}
 .content_box{background: #fff;padding: 20px 16px;border-radius: 24px;}
 
+.mr3{margin-right: 3px;}
 .mr8{margin-right: 8px;}
+
+.pt60{padding-top: 60px;}
+
+.pb60{padding-bottom: 60px;}
+
+.mt8{margin-top: 8px;}
+.mt12{margin-top: 12px;}
 .mt16{margin-top: 16px;}
+.mt24{margin-top: 24px;}
+.mt60{margin-top: 60px;}
+
 .mb4{margin-bottom: 4px;}
 .mb8{margin-bottom: 8px;}
 .mb12{margin-bottom: 12px;}
 .mb16{margin-bottom: 16px;}
 .mb20{margin-bottom: 20px;}
 
+.font12{font-size: 12px;}
 .font14{font-size: 14px;}
 .font16{font-size: 16px;}
+.font20{font-size: 20px;}
+.font22{font-size: 22px;}
 .font24{font-size: 24px;}
+.font30{font-size: 30px;}
 .font32{font-size: 32px;}
 
 .regular{font-weight: 400;}
 .medium{font-weight: 500;}
 .bold{font-weight: 700;}
 
-.shadow1{box-shadow: 0 8px 16px rgba(0,0,0,.1);}
-.shadow2{box-shadow: 0 2px 4px rgba(0,0,0,.05);}
+.shadow1{box-shadow: 0 8px 16px rgba(0,0,0,0.2);}
+.shadow2{box-shadow: 0 2px 4px rgba(0,0,0,0.15);}
 
 .purple{color: $purple;}
 .green{color: $green;}
+
+.transition{@include transition(all 0.3s);}
+
+.roboto{font-family: "Roboto",sans-serif;}
+
+/* motion keyframes */
+@keyframes horizontalscroll {
+  0% {
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  99%, 100% {
+      -moz-transform: translateX(-100vw);
+      -ms-transform: translateX(-100vw);
+      -webkit-transform: translateX(-100vw);
+      transform: translateX(-100vw);
+  }
+}
 
 // skip navigation
 #skip a{
@@ -52,57 +88,59 @@ header, nav, section, footer{display: block;}
 
 // body
 body{
-  font-family: "DM Sans", "Noto Sans KR", sans-serif;font-size: 16px;color: $black;line-height: 1;font-weight: 400;background: #f9f9f9;
+  font-family: "DM Sans", "Noto Sans KR", sans-serif;font-size: 16px;color: $black;line-height: 1;font-weight: 400;background: #f9f9f9;cursor: url("../images/common/cursor1.png"), auto;
   *{box-sizing: border-box;}
 }
 
 // pc (1920px)
-.header{
-  @include translateX-50;
-  @include transition(all 0.3s);
-  position: absolute;bottom: 60px;left: 50%;width: 85%;height: 64px;background: linear-gradient(to right, $purple, $green);border-radius: 24px;z-index: 900;
-  .wrap{
-    @include flex;
-    @include align-items;
-    @include justify-content(space-between);
-    margin: 0 20px;height: 64px;
-    .pc_nav{
+header{
+  position: absolute;width: 100%;padding:0 240px 60px;z-index: 900;transition-property: padding !important;
+  #header_wrap{
+    position: relative;width: 100%;height: 64px;background: linear-gradient(to right, $purple, $green);border-radius: 24px;z-index: 1;
+    .wrap{
       @include flex;
       @include align-items;
-      .logo a{display: block;width: 60px;height: 60px;background: url("../images/common/favicon.ico") no-repeat center / cover;}
-      ul{
+      @include justify-content(space-between);
+      @include transition(all 0.3s);
+       position: relative; margin: 0 20px;height: 64px;
+      .pc_nav{
         @include flex;
         @include align-items;
-        margin-left: 40px;
-        li{
-          a{display: block;font-size: 18px;line-height: 32px;padding: 0 14px;font-weight: 500;@include transition(all 0.3s);}
-          &:hover a, a:focus{color: #fff;@include transition(all 0.3s);}
+        .logo a{display: block;width: 60px;height: 60px;background: url("../images/common/favicon.ico") no-repeat center / cover;}
+        ul{
+          @include flex;
+          @include align-items;
+          margin-left: 40px;
+          li{
+            a{display: block;font-size: 18px;line-height: 32px;padding: 0 14px;font-weight: 500;@include transition(all 0.3s);}
+            &:hover a, a:focus-visible{color: #fff;@include transition(all 0.3s);}
+          }
         }
       }
-    }
-    .dark{
-      font-size: 32px;@include transition(all 0.3s);
-      &:hover, &:focus{color: $yellow;@include transition(all 0.3s);}
+      .dark{
+        font-size: 32px;@include transition(all 0.3s);
+        &:hover, &:focus{color: $yellow;@include transition(all 0.3s);}
+      }
     }
   }
+  .m_nav{visibility: hidden;height: 0;overflow: hidden;}
 }
-.header.active{
-  @include transform(translateX(0%));
-  position: fixed;top: 0;left: 0;width: 100%;border-radius: 0;
+header.fixed{
+  position: fixed; top: 0 !important;padding: 0;
+  #header_wrap{border-radius: 0;}
 }
-#m_header{visibility: hidden;height: 0;overflow: hidden;}
 #topBtn{
   position: fixed;bottom: 30px;right: 30px;width: 64px;height: 160px;display: none;z-index: 800;
   .arrow_top{
     @include translateX-50;
     @include transform(rotate(-45deg));
     @include transition(all 0.3s);
-    position: absolute;top: 26px;left: 62%; width: 1px;height: 24px;background: $black;
+    position: absolute;top: 26px;left: 61%; width: 2px;height: 24px;background: $black;
   }
   .arrow_btm{
     @include translateX-50;
     @include transition(all 0.3s);
-    position: absolute;bottom: 30px;left: 50%;width: 1px;height: 100px;background: $black;
+    position: absolute;bottom: 30px;left: 50%;width: 2px;height: 100px;background: $black;
   }
   &:hover, &:focus{
     .arrow_top{top: 6px;@include transition(all 0.3s);}
@@ -110,6 +148,33 @@ body{
   }
   .round{
     @include animation(round 10s infinite linear);
-    position: absolute;bottom: -15%;left: 50%;width: 120px;opacity: .8;
+    position: absolute;bottom: -18%;left: 50%;width: 120px;
+  }
+}
+section{
+  &:not(#main){
+    padding-top: 124px;
+    .wrap{
+      margin: 0 240px;
+    }
+  }
+}
+footer{
+  position: relative;z-index: 0;background: $purple;
+  .wrap{
+    margin: 0 200px;
+    div{
+      text-align: center;
+      a{display: inline-block;vertical-align: bottom;width: 120px;}
+      p{line-height: 1.4;}
+    }
+  }
+  .flow{
+    position: absolute;bottom: 0;overflow: hidden;width: 100%;
+    ul{
+      @include animation(horizontalscroll 30s linear infinite);
+      background: #fff;color: $black;border-top: 1px solid $black;border-bottom: 1px solid $black;width: 4368px;
+      li{margin-right: 72px;font-size: 18px;line-height: 2;display: inline-block;font-weight: 500;}
+    }
   }
 }

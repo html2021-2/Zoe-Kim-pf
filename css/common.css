@@ -11,6 +11,9 @@ ul {
 address {
   font-style: normal; }
 
+a:link, button {
+  cursor: url("../images/common/cursor2.png"), auto; }
+
 a:link, a:visited, a:hover, a:active {
   text-decoration: none;
   color: inherit; }
@@ -25,8 +28,7 @@ button {
   font-size: inherit;
   color: inherit;
   border: none;
-  background: none;
-  cursor: pointer; }
+  background: none; }
 
 header, nav, section, footer {
   display: block; }
@@ -61,11 +63,32 @@ header, nav, section, footer {
   padding: 20px 16px;
   border-radius: 24px; }
 
+.mr3 {
+  margin-right: 3px; }
+
 .mr8 {
   margin-right: 8px; }
 
+.pt60 {
+  padding-top: 60px; }
+
+.pb60 {
+  padding-bottom: 60px; }
+
+.mt8 {
+  margin-top: 8px; }
+
+.mt12 {
+  margin-top: 12px; }
+
 .mt16 {
   margin-top: 16px; }
+
+.mt24 {
+  margin-top: 24px; }
+
+.mt60 {
+  margin-top: 60px; }
 
 .mb4 {
   margin-bottom: 4px; }
@@ -82,14 +105,26 @@ header, nav, section, footer {
 .mb20 {
   margin-bottom: 20px; }
 
+.font12 {
+  font-size: 12px; }
+
 .font14 {
   font-size: 14px; }
 
 .font16 {
   font-size: 16px; }
 
+.font20 {
+  font-size: 20px; }
+
+.font22 {
+  font-size: 22px; }
+
 .font24 {
   font-size: 24px; }
+
+.font30 {
+  font-size: 30px; }
 
 .font32 {
   font-size: 32px; }
@@ -104,10 +139,10 @@ header, nav, section, footer {
   font-weight: 700; }
 
 .shadow1 {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); }
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); }
 
 .shadow2 {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); }
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); }
 
 .purple {
   color: #D1A1FF; }
@@ -115,6 +150,25 @@ header, nav, section, footer {
 .green {
   color: #55B36B; }
 
+.transition {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s; }
+
+.roboto {
+  font-family: "Roboto",sans-serif; }
+
+/* motion keyframes */
+@keyframes horizontalscroll {
+  0% {
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -webkit-transform: translateX(0);
+    transform: translateX(0); }
+  99%, 100% {
+    -moz-transform: translateX(-100vw);
+    -ms-transform: translateX(-100vw);
+    -webkit-transform: translateX(-100vw);
+    transform: translateX(-100vw); } }
 #skip a {
   position: absolute;
   top: 0;
@@ -136,93 +190,92 @@ body {
   color: #1E1E1E;
   line-height: 1;
   font-weight: 400;
-  background: #f9f9f9; }
+  background: #f9f9f9;
+  cursor: url("../images/common/cursor1.png"), auto; }
   body * {
     box-sizing: border-box; }
 
-.header {
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+header {
   position: absolute;
-  bottom: 60px;
-  left: 50%;
-  width: 85%;
-  height: 64px;
-  background: linear-gradient(to right, #D1A1FF, #55B36B);
-  border-radius: 24px;
-  z-index: 900; }
-  .header .wrap {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: space-between;
-    justify-content: space-between;
-    margin: 0 20px;
-    height: 64px; }
-    .header .wrap .pc_nav {
+  width: 100%;
+  padding: 0 240px 60px;
+  z-index: 900;
+  transition-property: padding !important; }
+  header #header_wrap {
+    position: relative;
+    width: 100%;
+    height: 64px;
+    background: linear-gradient(to right, #D1A1FF, #55B36B);
+    border-radius: 24px;
+    z-index: 1; }
+    header #header_wrap .wrap {
       display: -webkit-box;
       display: -moz-box;
       display: -ms-flexbox;
       display: -webkit-flex;
       display: flex;
       -webkit-align-items: center;
-      align-items: center; }
-      .header .wrap .pc_nav .logo a {
-        display: block;
-        width: 60px;
-        height: 60px;
-        background: url("../images/common/favicon.ico") no-repeat center/cover; }
-      .header .wrap .pc_nav ul {
+      align-items: center;
+      -webkit-justify-content: space-between;
+      justify-content: space-between;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      position: relative;
+      margin: 0 20px;
+      height: 64px; }
+      header #header_wrap .wrap .pc_nav {
         display: -webkit-box;
         display: -moz-box;
         display: -ms-flexbox;
         display: -webkit-flex;
         display: flex;
         -webkit-align-items: center;
-        align-items: center;
-        margin-left: 40px; }
-        .header .wrap .pc_nav ul li a {
+        align-items: center; }
+        header #header_wrap .wrap .pc_nav .logo a {
           display: block;
-          font-size: 18px;
-          line-height: 32px;
-          padding: 0 14px;
-          font-weight: 500;
-          -webkit-transition: all 0.3s;
-          transition: all 0.3s; }
-        .header .wrap .pc_nav ul li:hover a, .header .wrap .pc_nav ul li a:focus {
-          color: #fff;
-          -webkit-transition: all 0.3s;
-          transition: all 0.3s; }
-    .header .wrap .dark {
-      font-size: 32px;
-      -webkit-transition: all 0.3s;
-      transition: all 0.3s; }
-      .header .wrap .dark:hover, .header .wrap .dark:focus {
-        color: #ffc72c;
+          width: 60px;
+          height: 60px;
+          background: url("../images/common/favicon.ico") no-repeat center/cover; }
+        header #header_wrap .wrap .pc_nav ul {
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-align-items: center;
+          align-items: center;
+          margin-left: 40px; }
+          header #header_wrap .wrap .pc_nav ul li a {
+            display: block;
+            font-size: 18px;
+            line-height: 32px;
+            padding: 0 14px;
+            font-weight: 500;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s; }
+          header #header_wrap .wrap .pc_nav ul li:hover a, header #header_wrap .wrap .pc_nav ul li a:focus-visible {
+            color: #fff;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s; }
+      header #header_wrap .wrap .dark {
+        font-size: 32px;
         -webkit-transition: all 0.3s;
         transition: all 0.3s; }
+        header #header_wrap .wrap .dark:hover, header #header_wrap .wrap .dark:focus {
+          color: #ffc72c;
+          -webkit-transition: all 0.3s;
+          transition: all 0.3s; }
+  header .m_nav {
+    visibility: hidden;
+    height: 0;
+    overflow: hidden; }
 
-.header.active {
-  -webkit-transform: translateX(0%);
-  -moz-transform: translateX(0%);
-  transform: translateX(0%);
+header.fixed {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  border-radius: 0; }
-
-#m_header {
-  visibility: hidden;
-  height: 0;
-  overflow: hidden; }
+  top: 0 !important;
+  padding: 0; }
+  header.fixed #header_wrap {
+    border-radius: 0; }
 
 #topBtn {
   position: fixed;
@@ -243,8 +296,8 @@ body {
     transition: all 0.3s;
     position: absolute;
     top: 26px;
-    left: 62%;
-    width: 1px;
+    left: 61%;
+    width: 2px;
     height: 24px;
     background: #1E1E1E; }
   #topBtn .arrow_btm {
@@ -256,7 +309,7 @@ body {
     position: absolute;
     bottom: 30px;
     left: 50%;
-    width: 1px;
+    width: 2px;
     height: 100px;
     background: #1E1E1E; }
   #topBtn:hover .arrow_top, #topBtn:focus .arrow_top {
@@ -272,9 +325,48 @@ body {
     -moz-animation: round 10s infinite linear;
     animation: round 10s infinite linear;
     position: absolute;
-    bottom: -15%;
+    bottom: -18%;
     left: 50%;
-    width: 120px;
-    opacity: .8; }
+    width: 120px; }
+
+section:not(#main) {
+  padding-top: 124px; }
+  section:not(#main) .wrap {
+    margin: 0 240px; }
+
+footer {
+  position: relative;
+  z-index: 0;
+  background: #D1A1FF; }
+  footer .wrap {
+    margin: 0 200px; }
+    footer .wrap div {
+      text-align: center; }
+      footer .wrap div a {
+        display: inline-block;
+        vertical-align: bottom;
+        width: 120px; }
+      footer .wrap div p {
+        line-height: 1.4; }
+  footer .flow {
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+    width: 100%; }
+    footer .flow ul {
+      -webkit-animation: horizontalscroll 30s linear infinite;
+      -moz-animation: horizontalscroll 30s linear infinite;
+      animation: horizontalscroll 30s linear infinite;
+      background: #fff;
+      color: #1E1E1E;
+      border-top: 1px solid #1E1E1E;
+      border-bottom: 1px solid #1E1E1E;
+      width: 4368px; }
+      footer .flow ul li {
+        margin-right: 72px;
+        font-size: 18px;
+        line-height: 2;
+        display: inline-block;
+        font-weight: 500; }
 
 /*# sourceMappingURL=common.css.map */

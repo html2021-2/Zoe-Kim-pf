@@ -11,48 +11,51 @@
   <link rel="icon" href="images/common/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans:regular,500,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:regular,500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:regular,500,700" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+  <link rel="stylesheet" href="css/swiper-bundle.css">
   <link rel="stylesheet" href="css/common.css">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/experience.css">
+  <link rel="stylesheet" href="css/awards.css">
+  <link rel="stylesheet" href="css/contact.css">
 
   <script src="js/jquery-1.12.4.min.js"></script>
+  <script src="js/gsap.min.js"></script>
+  <script src="js/swiper-bundle.min.js"></script>
   <script src="js/common.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/about.js"></script>
+  <script src="js/awards.js"></script>
 </head>
 
 <body>
   <!-- skip navigation -->
   <div id="skip">
-    <a href="#cnt2">본문 바로가기</a>
+    <a href="#about">본문 바로가기</a>
   </div>
   <!-- header -->
-  <header id="pc_header" class="header shadow1">
-    <div class="wrap">
-      <nav class="pc_nav">
-        <h1 class="logo">
-          <a href="index.html"><span class="blind">엔조잇</span></a><!-- 로고라고 텍스트 안적어요 -->
-        </h1>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#awards">Awards</a></li>
-          <li><a href="#report">Report</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <button class="dark" type="button">
-        <i class="xi-moon"></i>
-        <span class="blind">다크 모드</span>
-      </button>
+  <header class="transition">
+    <div id="header_wrap">
+      <div class="wrap">
+        <nav class="pc_nav">
+          <h1 class="logo">
+            <a href="index.html"><span class="blind">포트폴리오 사이트 로고</span></a>
+          </h1>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#awards">Awards</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <button class="dark" type="button">
+          <i class="xi-moon"></i>
+          <span class="blind">다크 모드</span>
+        </button>
+      </div>
     </div>
-  </header>
-  <header id="m_header" class="header shadow1">
-    <h1 class="logo">
-      <a href="index.html"><span class="blind">엔조잇 로고</span></a>
-    </h1>
-    <button class="dark" type="button">
-      <span class="blind">다크 모드</span>
-    </button>
     <nav class="m_nav">
       <button class="menu_open" type="button">
         <span class="blind">전체메뉴 열기</span>
@@ -62,7 +65,6 @@
           <li><a href="#about">About</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#awards">Awards</a></li>
-          <li><a href="#report">Report</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <button class="menu_close" type="button">
@@ -96,7 +98,7 @@
   </section>
   <!-- about contents -->
   <section id="about">
-    <h2 class="blind">자기소개 페이지</h2>
+    <h2 class="blind">자기소개</h2>
     <div class="wrap">
       <div class="title mb20">
         <h4 class="font32">About</h4>
@@ -115,7 +117,7 @@
           </p>
           <p class="font14 mb4">
             <i class="xi-cake font16 mr8"></i>
-            <span>1997. 11. 27 (만 <span id="age"></span>세)</span>
+            <span>1997. 11. 27 (만 <span id="age"></span>세 <span id="today" class="font12"></span>)</span>
           </p>
           <p class="font14 mb4">
             <i class="xi-mail font16 mr8"></i>
@@ -153,36 +155,432 @@
         </div>
         <div class="content_box shadow2 mb20">
           <h5 class="mb16 green">Skills</h5>
-          <p class="font14 mb12">
-            코딩하는 디자이너, Zoe입니다. <br>UX/UI 디자인 및 퍼블리싱 분야의 전문가가 되고자 합니다.
-          </p>
-          <p class="font14 mb4">
-            <i class="xi-maker font16 mr8"></i>
-            <span>대한민국 서울</span>
-          </p>
-          <p class="font14 mb4">
-            <i class="xi-cake font16 mr8"></i>
-            <span>1997. 11. 27 (만 <span id="age"></span>세)</span>
-          </p>
-          <p class="font14 mb4">
-            <i class="xi-mail font16 mr8"></i>
-            <span><a href="mailto:thfud333@gmail.com">thfud333@gmail.com</a></span>
-          </p>
-          <p class="font14 mb4">
-            <i class="xi-github font16 mr8"></i>
-            <span><a href="https://github.com/Zoe-Kim">https://github.com/Zoe-Kim</a></span>
-          </p>
+          <div class="accordion" id="skills">
+            <h3 class="tit">
+              <button type="button" aria-controls="acdnPanel1" id="acdnHeader1" class="acdnHeader first mt8 medium">
+                <span class="blind">Category</span>
+                <span>Programming</span>
+                <i class="xi-angle-down-min"></i>
+              </button>
+            </h3>
+            <div role="region" aria-labelledby="acdnHeader1" id="acdnPanel1" class="acdnPanel">
+              <div class="mt8 font14">
+                <span class="blind">Programming Skills</span>
+                <p>HTML5</p>
+                <p>CSS3</p>
+                <p>Sass</p>
+                <p>jQuery</p>
+                <p>JavaScript</p>
+                <p>Unity(C#)</p>
+              </div>
+            </div>
+            <h3 class="tit">
+              <button type="button" aria-controls="acdnPanel2" id="acdnHeader2" class="acdnHeader mt8 medium">
+                <span class="blind">Category</span>
+                <span>Design</span>
+                <i class="xi-angle-down-min"></i>
+              </button>
+            </h3>
+            <div role="region" aria-labelledby="acdnHeader2" id="acdnPanel2" class="acdnPanel">
+              <div class="mt8 font14">
+                <span class="blind">Design Skills</span>
+                <p>XD</p>
+                <p>Figma</p>
+                <p>Illustrator</p>
+                <p>Photoshop</p>
+                <p>After Effects</p>
+                <p>Premiere Pro</p>
+              </div>
+            </div>
+            <h3 class="tit">
+              <button type="button" aria-controls="acdnPanel3" id="acdnHeader3" class="acdnHeader last mt8 medium">
+                <span class="blind">Category</span>
+                <span>Utility</span>
+                <i class="xi-angle-down-min"></i>
+              </button>
+            </h3>
+            <div role="region" aria-labelledby="acdnHeader3" id="acdnPanel3" class="acdnPanel">
+              <div class="mt8 font14">
+                <span class="blind">Utility Skills</span>
+                <p>GitHub</p>
+                <p>Notion</p>
+                <p>Zeplin</p>
+              </div>
+            </div>
+          </div>      
         </div>
       </div>
     </div>
   </section>
   <!-- experience contents -->
+  <section id="experience">
+    <h2 class="blind">경험 및 경력 기술</h2>
+    <div class="wrap">
+      <div class="title mb20">
+        <h4 class="font32">Experience</h4>
+      </div>
+    </div>
+    <div class="wrap">
+      <ul class="experience_history">
+        <!-- 1. 반응형 웹 포트폴리오 제작 -->
+        <li>
+          <a href="">
+            <div>
+              <span class="thumb_wrap">
+                <img src="images/experience/thumb1.jpg" alt="민음사 웹 리디자인 썸네일">
+              </span>
+              <div class="cnt_wrap">
+                <span class="date font22">2021.07 - 2021.08</span>
+                <strong class="title font30">반응형 웹 포트폴리오 제작</strong>
+                <span class="tag_wrap mt24">
+                  <span class="tag mr3 font20">#반응형웹</span>
+                  <span class="tag mr3 font20">#HTML5</span>
+                  <span class="tag mr3 font20">#CSS3</span>
+                  <span class="tag mr3 font20">#Sass</span>
+                  <span class="tag mr3 font20">#jQuery</span>
+                </span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <!-- 2. 민음사 반응형 웹 리디자인 -->
+        <li>
+          <a href="">
+            <div>
+              <span class="thumb_wrap">
+                <img src="images/experience/thumb2.jpg" alt="민음사 웹 리디자인 썸네일">
+              </span>
+              <div class="cnt_wrap">
+                <span class="date font22">2021.06 - 2021.07</span>
+                <strong class="title font30">'민음사' 반응형 웹 리뉴얼</strong>
+                <span class="tag_wrap mt24">
+                  <span class="tag mr3 font20">#반응형웹</span>
+                  <span class="tag mr3 font20">#HTML5</span>
+                  <span class="tag mr3 font20">#CSS3</span>
+                  <span class="tag mr3 font20">#Sass</span>
+                  <span class="tag mr3 font20">#jQuery</span>
+                </span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <!-- 3. 라온 반응형 웹 클론코딩 -->
+        <li>
+          <a href="">
+            <div>
+              <span class="thumb_wrap">
+                <img src="images/experience/thumb3.jpg" alt="라온 웹 클론코딩 썸네일">
+              </span>
+              <div class="cnt_wrap">
+                <span class="date font22">2021.06 - 2021.07</span>
+                <strong class="title font30">'라온' 반응형 웹 클론코딩</strong>
+                <span class="tag_wrap mt24">
+                  <span class="tag mr3 font20">#반응형웹</span>
+                  <span class="tag mr3 font20">#HTML5</span>
+                  <span class="tag mr3 font20">#CSS3</span>
+                  <span class="tag mr3 font20">#Sass</span>
+                  <span class="tag mr3 font20">#jQuery</span>
+                </span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <!-- 4. 이노룰스 모바일 웹 클론코딩 -->
+        <li>
+          <a href="">
+            <div>
+              <span class="thumb_wrap">
+                <img src="images/experience/thumb4.jpg" alt="민음사 웹 리디자인 썸네일">
+              </span>
+              <div class="cnt_wrap">
+                <span class="date font22">2021.05 - 2021.06</span>
+                <strong class="title font30">'이노룰스' 모바일 웹 클론코딩</strong>
+                <span class="tag_wrap mt24">
+                  <span class="tag mr3 font20">#모바일웹</span>
+                  <span class="tag mr3 font20">#HTML5</span>
+                  <span class="tag mr3 font20">#CSS3</span>
+                  <span class="tag mr3 font20">#Sass</span>
+                  <span class="tag mr3 font20">#jQuery</span>
+                </span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <!-- 5. 영상 기반 소셜 플랫폼 잇-플 -->
+        <li>
+          <a href="">
+            <div>
+              <span class="thumb_wrap">
+                <img src="images/experience/thumb5.jpg" alt="민음사 웹 리디자인 썸네일">
+              </span>
+              <div class="cnt_wrap">
+                <span class="date font22">2021.01 - 2021.02</span>
+                <strong class="title font30">영상 기반 소셜 플랫폼 '잇-플' UX/UI</strong>
+                <span class="tag_wrap mt24">
+                  <span class="tag mr3 font20">#SW해커톤</span>
+                  <span class="tag mr3 font20">#Android</span>
+                  <span class="tag mr3 font20">#WebView</span>
+                  <span class="tag mr3 font20">#HTML5</span>
+                  <span class="tag mr3 font20">#CSS3</span>
+                  <span class="tag mr3 font20">#Figma</span>
+                </span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <!-- 6. 모바일 게임 ‘눕눕을 찾아서’ -->
+        <li>
+          <a href="">
+            <div>
+              <span class="thumb_wrap">
+                <img src="images/experience/thumb6.jpg" alt="민음사 웹 리디자인 썸네일">
+              </span>
+              <div class="cnt_wrap">
+                <span class="date font22">2020.07 - 2020.08</span>
+                <strong class="title font30">모바일 게임 ‘눕눕을 찾아서’ 리디자인</strong>
+                <span class="tag_wrap mt24">
+                  <span class="tag mr3 font20">#XD</span>
+                  <span class="tag mr3 font20">#Figma</span>
+                  <span class="tag mr3 font20">#Photoshop</span>
+                  <span class="tag mr3 font20">#Illustrator</span>
+                </span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <!-- 7. 경제조기교육 게이미피케이션 앱 ‘안다미로’ -->
+        <li>
+          <a href="">
+            <div>
+              <span class="thumb_wrap">
+                <img src="images/experience/thumb7.jpg" alt="민음사 웹 리디자인 썸네일">
+              </span>
+              <div class="cnt_wrap">
+                <span class="date font22">2019.09 - 2020.07</span>
+                <strong class="title font30">경제 조기 교육 게이미피케이션 ‘안다미로’ UX/UI</strong>
+                <span class="tag_wrap mt24">
+                  <span class="tag mr3 font20">#Android</span>
+                  <span class="tag mr3 font20">#XD</span>
+                  <span class="tag mr3 font20">#Illustrator</span>
+                  <span class="tag mr3 font20">#AfterEffects</span>
+                  <span class="tag mr3 font20">#Unity</span>
+                </span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <!-- 8. 마켓컬리 -->
+        <li>
+          <a href="">
+            <div>
+              <span class="thumb_wrap">
+                <img src="images/experience/thumb8.jpg" alt="민음사 웹 리디자인 썸네일">
+              </span>
+              <div class="cnt_wrap">
+                <span class="date font22">2020.03 - 2020.06</span>
+                <strong class="title font30">‘마켓컬리’ 앱 UX/UI 리디자인</strong>
+                <span class="tag_wrap mt24">
+                  <span class="tag mr3 font20">#XD</span>
+                  <span class="tag mr3 font20">#Figma</span>
+                  <span class="tag mr3 font20">#UserResearch</span>
+                  <span class="tag mr3 font20">#Prototype</span>
+                </span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <!-- 9. 더불어민주당 선거캠프 디자인팀 -->
+        <li>
+          <a href="">
+            <div>
+              <span class="thumb_wrap">
+                <img src="images/experience/thumb9.jpg" alt="민음사 웹 리디자인 썸네일">
+              </span>
+              <div class="cnt_wrap">
+                <span class="date font22">2020.03 - 2020.04</span>
+                <strong class="title font30">더불어민주당 선거캠프 디자인팀</strong>
+                <span class="tag_wrap mt24">
+                  <span class="tag mr3 font20">#MotionGraphics</span>
+                  <span class="tag mr3 font20">#PrintDesign</span>
+                </span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <!-- 10. ‘블래닛’ CI 디자인 -->
+        <li>
+          <a href="">
+            <div>
+              <span class="thumb_wrap">
+                <img src="images/experience/thumb10.jpg" alt="민음사 웹 리디자인 썸네일">
+              </span>
+              <div class="cnt_wrap">
+                <span class="date font22">2020.01 - 2020.02</span>
+                <strong class="title font30">‘Blenit’ CI Design</strong>
+                <span class="tag_wrap mt24">
+                  <span class="tag mr3 font20">#Branding</span>
+                  <span class="tag mr3 font20">#GuideLine</span>
+                  <span class="tag mr3 font20">#Illustrator</span>
+                </span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <!-- 11. '잇다'(후케어스) 디자인팀 인턴 -->
+        <li>
+          <a href="">
+            <div>
+              <span class="thumb_wrap">
+                <img src="images/experience/thumb11.jpg" alt="민음사 웹 리디자인 썸네일">
+              </span>
+              <div class="cnt_wrap">
+                <span class="date font22">2019.09 - 2019.12</span>
+                <strong class="title font30">'잇다'(후케어스) 디자인팀 인턴</strong>
+                <span class="tag_wrap mt24">
+                  <span class="tag mr3 font20">#MotionGraphics</span>
+                  <span class="tag mr3 font20">#PrintDesign</span>
+                  <span class="tag mr3 font20">#Marketing</span>
+                </span>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
   <!-- awards contents -->
-  <!-- about contents -->
+  <section id="awards">
+    <h2 class="blind">수상 내역</h2>
+    <div class="wrap">
+      <div class="title mb20">
+        <h4 class="font32">Awards</h4>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="swiper-container">
+        <!-- 슬라이더 컨텐츠 그룹 -->
+        <div class="swiper-wrapper">
+          <div class="swiper-slide slide1">
+            <div>
+              <div class="content_box shadow2">
+                <span class="txt_wrap">
+                  <h4 class="font14 green">SW중심대학 공동해커톤</h4><strong class="font20">SW중심대학협의회장상</strong>
+                  <span class="date mt16 font12">2021. 02</span>
+                </span>
+                <div class="thumb_wrap">
+                  <img src="images/awards/thumb1.jpg" alt="SW중심대학 공동해커톤 상장과 판넬">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide slide2">
+            <div>
+              <div class="content_box shadow2">
+                <span class="txt_wrap">
+                  <h4 class="font14 green">서울여대 SWU IT 해커톤</h4><strong class="font20">우수상</strong>
+                  <span class="date mt16 font12">2019. 09</span>
+                </span>
+                <div class="thumb_wrap">
+                  <img src="images/awards/thumb2.jpg" alt="서울여대 SWU IT 해커톤 수상 판넬">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide slide3">
+            <div>
+              <div class="content_box shadow2">
+                <span class="txt_wrap">
+                  <h4 class="font14 green">성균관대 C-SCHOOL 융합기초프로젝트</h4><strong class="font20">우수상</strong>
+                  <span class="date mt16 font12">2019. 02</span>
+                </span>
+                <div class="thumb_wrap">
+                  <img src="images/awards/thumb3.jpg" alt="성균관대 C-SCHOOL 융합기초프로젝트 수상 판넬">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide slide4">
+            <div>
+              <div class="content_box shadow2">
+                <span class="txt_wrap">
+                  <h4 class="font14 green">김가네 신메뉴 홍보 영상 공모전</h4><strong class="font20">금상</strong>
+                  <span class="date mt16 font12">2018. 09</span>
+                </span>
+                <div class="thumb_wrap">
+                  <img src="images/awards/thumb4.jpg" alt="김가네 신메뉴 홍보 영상 공모전 수상자 발표 내역">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide slide5">
+            <div>
+              <div class="content_box shadow2">
+                <span class="txt_wrap">
+                  <h4 class="font14 green">서울공공자전거 따릉이 서포터즈 2기</h4><strong class="font20">최우수상</strong>
+                  <span class="date mt16 font12">2018. 08</span>
+                </span>
+                <div class="thumb_wrap">
+                  <img class="btm" src="images/awards/thumb5.jpg" alt="서울공공자전거 따릉이 서포터즈 상장">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- swiper 제어 버튼 그룹 -->
+        <div class="controller">
+          <div class="swiper-button-prev shadow2"></div>
+          <div class="swiper-button-next shadow2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- contact contents -->
+  <section id="contact">
+    <h2 class="blind">메일 보내기</h2>
+    <div class="wrap">
+      <div class="title mb20">
+        <h4 class="font32">Contact</h4>
+      </div>
+    </div>
+  </section>
   <!-- footer -->
-  <footer id="footer">
-
+  <footer class="mt60 pt60 pb60">
+    <div class="wrap">
+      <div class="mb8">
+        <a href="index.html"><img src="images/common/favicon.ico" alt="포트폴리오 사이트 로고"></a>
+      </div>
+      <div class="mb20">
+        <p class="font12 roboto">Zoe's Web - Portfolio</p>
+      </div>
+      <div class="mb20">
+        <p class="font14 roboto">Thanks for visiting my Website😊</p>
+        <p class="font14 roboto">Copyright&copy; 2021 Zoe All Rights Reserved.</p>
+      </div>
+    </div>
+    <div class="flow">
+      <ul class="horizontalscroll">
+        <li>YOU HAVE REACHED THE END!</li>
+        <li>◇</li>
+        <li>YOU HAVE REACHED THE END!</li>
+        <li>◇</li>
+        <li>YOU HAVE REACHED THE END!</li>
+        <li>◇</li>
+        <li>YOU HAVE REACHED THE END!</li>
+        <li>◇</li>
+        <li>YOU HAVE REACHED THE END!</li>
+        <li>◇</li>
+        <li>YOU HAVE REACHED THE END!</li>
+        <li>◇</li>
+        <li>YOU HAVE REACHED THE END!</li>
+        <li>◇</li>
+        <li>YOU HAVE REACHED THE END!</li>
+        <li>◇</li>
+        <li>YOU HAVE REACHED THE END!</li>
+        <li>◇</li>
+        <li>YOU HAVE REACHED THE END!</li>
+        <li>◇</li>
+      </ul>
+    </div>
   </footer>
 </body>
 
